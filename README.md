@@ -1,7 +1,8 @@
 Start the App :
 
 
->> https://polar-tor-97887.herokuapp.com/ <<
+
+>> https://polar-tor-97887.herokuapp.com/[INPUT-DATE-OR-UNIX-TIMESTAMP] <<
 
 
 
