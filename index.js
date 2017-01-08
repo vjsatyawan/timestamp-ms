@@ -10,6 +10,11 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+app.get("/", function(request, response) {
+  response.end("https://polar-tor-97887.herokuapp.com/[INPUT-DATE-OR-UNIX-TIMESTAMP]");
+});
+
+
 app.all("/:date", function(request, response) {
 
 if(moment(request.params.date, 'LL', true).isValid() == true){
@@ -28,9 +33,6 @@ else
 //   response.end("Welcome to the about page!");
 // });
 
-app.get("*", function(request, response) {
-  response.end("https://polar-tor-97887.herokuapp.com/[INPUT-DATE-OR-UNIX-TIMESTAMP]");
-});
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
