@@ -29,7 +29,7 @@ else
 // });
 
 app.get("*", function(request, response) {
-  response.end("No date found!");
+  response.end("https://polar-tor-97887.herokuapp.com/[INPUT-DATE-OR-UNIX-TIMESTAMP]");
 });
 
 app.listen(app.get('port'), function() {
