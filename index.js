@@ -1,4 +1,5 @@
 var express = require('express');
+var moment = require('moment');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
@@ -9,8 +10,26 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(request, response) {
-  response.render('pages/index');
+app.all("/:date", function(request, response) {
+
+if(moment(request.params.date, 'LL', true).isValid() == true){
+  response.end("Date is: "+request.params.date);
+}
+else if(moment.unix(request.params.date).isValid() == true){
+    response.end("unix timestamp is: "+request.params.date); 
+}
+else
+{
+   response.end("No date found!"); 
+}
+});
+
+// app.get("/about", function(request, response) {
+//   response.end("Welcome to the about page!");
+// });
+
+app.get("*", function(request, response) {
+  response.end("No date found!");
 });
 
 app.listen(app.get('port'), function() {
